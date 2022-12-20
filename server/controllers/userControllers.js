@@ -166,9 +166,9 @@ async function changePassword(req, res) {
       throw new Error("User not found");
     }
 
-    const { oldPassword, newPassword, confirmPassword } = req.body;
+    const { newPassword, confirmPassword } = req.body;
 
-    if (!oldPassword || !newPassword || !confirmPassword) {
+    if (!newPassword || !confirmPassword) {
       res.status(400);
       throw new Error("Please fill in all fields");
     }
@@ -178,12 +178,12 @@ async function changePassword(req, res) {
       throw new Error("Passwords don't match");
     }
 
-    const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
+   /*  const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
 
     if (!passwordIsCorrect) {
       res.status(400);
       throw new Error("Current password is incorrect");
-    }
+    } */
 
     user.password = newPassword;
     await user.save();
