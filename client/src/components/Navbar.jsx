@@ -10,6 +10,7 @@ import InnerDropdown from "./InnerDropdown";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 import CartContext from "../context/CartContext";
+import Switcher from "./Switcher";
 
 const Navbar = () => {
   const { items } = useContext(CartContext);
@@ -30,10 +31,11 @@ const Navbar = () => {
     Auth.logout();
   };
   return (
-    <nav className="shadow-md relative w-full bg-[#009fcf]">
+    <nav className="shadow-md relative w-full bg-[#009fcf] dark:bg-[#4b4b4b]">
       <div className="md:flex justify-between py-4 md:px-10 px-4">
         <div className="flex items-center font-bold text-2xl cursor-pointer">
           <Link to={"/home"}>My-Amazona</Link>
+          <Switcher/>
         </div>
         <div
           onClick={() => setOpen(!open)}
@@ -42,9 +44,9 @@ const Navbar = () => {
           {open ? <FaRegWindowClose /> : <FaBars />}
         </div>
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-4 md:static bg-[#009fcf] absolute md:z-auto z-[1] left-0 w-full md:w-auto md:pl-0 pl-4 transition-all duration-300 ease-in ${
+          className={`md:flex md:items-center md:pb-0 pb-4 md:static bg-[#009fcf] dark:bg-[#4b4b4b] absolute md:z-auto z-[1] left-0 w-full md:w-auto md:pl-0 pl-4 ${
             open
-              ? "top-[60px] opacity-100 border-b-2 bg-[#198db1]"
+              ? "top-[60px] opacity-100 border-b-2 bg-[#198db1] dark:bg-[#4b4b4b]"
               : "top-[-500px] opacity-0"
           } md:opacity-100`}
         >
