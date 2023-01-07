@@ -1,7 +1,6 @@
 const { User, Token } = require("../models/index");
 const generateToken = require("../utils/generateToken");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 
@@ -48,11 +47,16 @@ const getOneUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, confirmPass } = req.body;
 
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !confirmPass) {
       res.status(400);
       throw new Error("Please add all fields");
+    }
+
+    if (password !== confirmPass) {
+      res.status(400);
+      throw new Error("Passwords do not match");
     }
 
     const userExists = await User.findOne({ email });
