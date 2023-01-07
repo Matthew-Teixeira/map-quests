@@ -11,7 +11,7 @@
     "stripe": "^11.3.0"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "name": "server",
   "version": "1.0.0",
