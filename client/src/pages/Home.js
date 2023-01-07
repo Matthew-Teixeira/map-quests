@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div>
-        <h1>My Amazona</h1>
-        <Link to={"/upload_images"}>Upload</Link>
+        <h1>Home</h1>
     </div>
   )
 }

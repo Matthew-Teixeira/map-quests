@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const InnerDropdown = ({ list }) => {
   return (
-    <ul className="absolute md:right-[-30px] top-8 w-[150px] bg-[#198db1] rounded-md py-2 border-[1px] border-[#00273d] shadow-2xl">
+    <ul className="absolute md:right-[-30px] top-8 w-[150px] rounded-md py-2 shadow-xl dark:bg-gray-800 dark:text-[#fdf8ad]">
       {
             list.map((link) => (
               <li key={link.name} className="ml-2 text-lg my-2">
-                <Link to={link.link} className="hover:text-gray-800 duration-200 font-semibold">{link.name}</Link>
+                <Link to={link.link}>{link.name}</Link>
               </li>
             ))
           }
