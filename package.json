@@ -1,0 +1,22 @@
+{
+  "name": "user-auth-mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ApolloSolo/user-auth-mern.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ApolloSolo/user-auth-mern/issues"
+  },
+  "homepage": "https://github.com/ApolloSolo/user-auth-mern#readme"
+}
