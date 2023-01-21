@@ -43,7 +43,7 @@ export default function Login() {
   };
 
   return (
-    <div className="relative flex flex-col justify-center h-[calc(100vh-66px)] overflow-hidden">
+    <div className="relative flex flex-col justify-center h-[calc(100vh-66px)] overflow-hidden px-2">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl dark:bg-gray-800">
         <h1 className="text-3xl font-semibold text-center underline dark:text-[#fdf8ad]">
           Sign in
