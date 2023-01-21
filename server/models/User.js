@@ -27,12 +27,6 @@ const userSchema = new Schema(
       default:
         "https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg",
     },
-    purchases: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "purchase"
-      }
-    ]
   },
   {
     timestamps: true,

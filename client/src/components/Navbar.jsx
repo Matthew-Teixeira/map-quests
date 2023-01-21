@@ -1,27 +1,23 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
   FaBars,
   FaRegWindowClose,
   FaChevronDown,
-  FaChevronUp,
-  FaShoppingCart
+  FaChevronUp
 } from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
 import InnerDropdown from "./InnerDropdown";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
-import CartContext from "../context/CartContext";
 import Switcher from "./Switcher";
 
 const Navbar = () => {
-  const { items } = useContext(CartContext);
-
   const loggedIn = Auth.loggedIn();
   // Define links for Service dropdown menu
   let Links = [
     { name: "Buy", link: "/" },
     { name: "Sell", link: "/" },
-    { name: "Portfolio", link: "/" },
-    { name: "Settings", link: "/" }
+    { name: "Portfolio", link: "/" }
   ];
   let [open, setOpen] = useState(false);
   let [dropdown, setDropdown] = useState(false);
@@ -34,10 +30,13 @@ const Navbar = () => {
   return (
     <nav className="shadow-md relative w-full bg-blue-500 dark:bg-gray-800 dark:text-[#fdf8ad]">
       <div className="md:flex justify-between py-2 px-6">
-        <div className="flex items-center font-bold text-2xl cursor-pointer justify-center">
+        <div className="flex items-center">
           <Switcher />
-          <Link to={"/home"}>Coin-Vault</Link>
+          <div className="font-bold text-2xl cursor-pointer mx-auto pr-[30px]">
+            <Link to={"/home"}>Coin-Vault</Link>
+          </div>
         </div>
+
         <div
           onClick={() => setOpen(!open)}
           className="text-3xl absolute right-8 top-5 cursor-pointer md:hidden"
@@ -82,7 +81,6 @@ const Navbar = () => {
           {loggedIn ? (
             <>
               <li className="md:ml-8 text-xl md:my-0 my-6">
-               
                 <Link
                   to={"/"}
                   onClick={logout}
@@ -91,10 +89,9 @@ const Navbar = () => {
                   Logout
                 </Link>
               </li>
-              <Link to={"/cart"}>
+              <Link to={"/settings"}>
                 <div className="flex items-center ml-6">
-                  <FaShoppingCart />
-                  <span className="ml-1">{items.length}</span>
+                  <FiSettings />
                 </div>
               </Link>
             </>
@@ -109,12 +106,12 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="md:ml-8 text-xl md:my-0 my-6">
-                <a
-                  href="/register"
+                <Link
+                  to={"/register"}
                   className="hover:text-gray-800 dark:hover:text-gray-200 duration-200 font-semibold"
                 >
                   Sign Up
-                </a>
+                </Link>
               </li>
             </>
           )}
