@@ -8,6 +8,8 @@ import ForgotPassword from "./pages/admin_settings/ForgotPassword";
 import ResetPassword from "./pages/admin_settings/ResetPassword";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
+import EnterTime from "./pages/EnterTime";
+import TimeTable from "./pages/TimeTable";
 
 function App() {
   return (
@@ -26,10 +28,12 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/forgot_pass" element={<ForgotPassword />} />
+            <Route path="/enter_time" element={<EnterTime />} />
             <Route
               path="/resetpassword/:resetToken"
               element={<ResetPassword />}
             />
+            <Route path="my_time" element={<TimeTable />} />
           </Routes>
         </main>
       </Router>
