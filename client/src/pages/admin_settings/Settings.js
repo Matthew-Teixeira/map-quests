@@ -74,7 +74,7 @@ const Settings = () => {
         ? <p>Loading...</p>
         : <form
             onSubmit={onSubmit}
-            className="mt-6 p-2 max-w-3xl mx-auto bg-slate-300 dark:bg-slate-500 rounded-md shadow-lg"
+            className="mt-6 p-2 sm:p-4 max-w-3xl mx-auto bg-slate-300 dark:bg-slate-600 rounded-md shadow-lg"
           >
             <h2 className="text-2xl font-bold my-2">User Profile</h2>
             <div className="mb-2">
@@ -109,7 +109,7 @@ const Settings = () => {
                 className="block w-full px-4 py-2 mt-2 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
-            <div className="mt-6 max-w-sm mx-auto">
+            <div className="my-6 max-w-sm mx-auto">
               <button
                 type="submit"
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
@@ -122,6 +122,15 @@ const Settings = () => {
         <p>
           {userError}
         </p>}
+
+      <div className="max-w-3xl mx-auto mt-2">
+        <Link
+          to="/forgot_pass"
+          className="text-sm text-blue-400 hover:text-blue-700 hover:underline dark:text-[#fdf8ad] ml-2"
+        >
+          Reset Password
+        </Link>
+      </div>
     </div>
   );
 };
