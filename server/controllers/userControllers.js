@@ -1,4 +1,4 @@
-const { User, Token } = require("../models/index");
+const { User, Token, TimeCard } = require("../models/index");
 const generateToken = require("../utils/generateToken");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
@@ -32,11 +32,14 @@ const getMe = async (req, res) => {
 const getOneUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    const foundUser = await User.findById(userId).select("-__v -password");
+    const foundUser = await User.findById(userId)
+      .populate("time_card")
+      .select("-__v -password");
     if (!foundUser) {
       res.status(404);
       throw new Error("User Not Found");
     }
+    //const userTimeCard = await TimeCard.findById
     res.status(200).json(foundUser);
   } catch (error) {
     res.json({
@@ -48,6 +51,8 @@ const getOneUser = async (req, res) => {
 const registerUser = async (req, res) => {
   try {
     const { username, email, password, confirmPass } = req.body;
+
+    console.log(username, email, password, confirmPass);
 
     if (!username || !email || !password || !confirmPass) {
       res.status(400);
@@ -71,6 +76,9 @@ const registerUser = async (req, res) => {
       res.status(400);
       throw new Error("Invalid user data");
     }
+
+    const userTimeCard = await TimeCard.create({ user: newUser._id });
+    await User.findByIdAndUpdate(newUser._id, { time_card: userTimeCard._id });
 
     const token = await generateToken(newUser);
 
@@ -182,7 +190,7 @@ async function changePassword(req, res) {
       throw new Error("Passwords don't match");
     }
 
-   /*  const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
+    /*  const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
 
     if (!passwordIsCorrect) {
       res.status(400);
@@ -292,7 +300,9 @@ async function forgotPassword(req, res) {
     res.status(200).json({ success: true, message: "Reset email sent" });
   } catch (error) {
     res.json({
-      error: error.message
+      error: true,
+      success: false,
+      message: error.message
     });
   }
 }
@@ -321,7 +331,7 @@ async function resetPassword(req, res) {
       expiresAt: { $gt: Date.now() }
     });
 
-    console.log(dbToken)
+    console.log(dbToken);
 
     if (!dbToken) {
       throw new Error("Invalid or expired reset token");
@@ -334,12 +344,15 @@ async function resetPassword(req, res) {
     await user.save();
 
     res.status(201).json({
+      error: false,
       success: true,
-      message: "Password reset successful. Please log in."
+      message: "Password reset successful. Please login."
     });
   } catch (error) {
     res.json({
-      error: error.message,
+      error: true,
+      success: false,
+      message: error.message,
       stack: error.stack
     });
   }
