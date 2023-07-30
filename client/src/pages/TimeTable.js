@@ -58,37 +58,37 @@ export default function TimeTable() {
                       scope="col"
                       className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Time In
+                      IN
                     </th>
                     <th
                       scope="col"
                       className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Time Out
+                      OUT
                     </th>
                     <th
                       scope="col"
                       className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Regular Hours
+                      Hours
                     </th>
                     <th
                       scope="col"
                       className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Regular Minutes
+                      Minutes
                     </th>
                     <th
                       scope="col"
                       className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Overtime Hours
+                      Over Hours
                     </th>
                     <th
                       scope="col"
                       className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Overtime Minutes
+                      Over Minutes
                     </th>
                     <th scope="col" className="relative px-6 py-3">
                       <span className="sr-only">Edit</span>
@@ -98,51 +98,43 @@ export default function TimeTable() {
                 <tbody className="bg-white divide-y divide-gray-200 dark:bg-slate-100">
                   {timeData.map((time) => (
                     <tr key={time._id}>
-                      <td className="px-4 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
-                          {new Date(time.start_time).toLocaleString("en-US", {
-                            timeZone: "UTC",
-                            hour12: true,
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            second: "2-digit"
-                          })}
-                        </div>
-                      </td>
-                      <td className="px-4 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
-                          {new Date(time.end_time).toLocaleString("en-US", {
-                            timeZone: "UTC",
-                            hour12: true,
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            second: "2-digit"
-                          })}
-                        </div>
-                      </td>
                       <td className="px-2 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">
+                          {new Date(time.start_time).toLocaleString()}
+                        </div>
+                      </td>
+
+                      <td className="px-2 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">
+                          {new Date(time.end_time).toLocaleString()}
+                        </div>
+                      </td>
+                      <td className="px-2 py-4 whitespace-nowrap  text-center">
                         <div className="text-sm text-gray-500">
                           {time.reg_hours}
                         </div>
                       </td>
-                      <td className="px-2 py-4 whitespace-nowrap">
+                      <td className="px-2 py-4 whitespace-nowrap  text-center">
                         <div className="text-sm text-gray-500">
                           {time.reg_minutes}
                         </div>
                       </td>
-                      <td className="px-2 py-4 whitespace-nowrap">
+                      <td className="px-2 py-4 whitespace-nowrap  text-center">
                         <div className="text-sm text-gray-500">
                           {time.over_hours}
                         </div>
                       </td>
-                      <td className="px-2 py-4 whitespace-nowrap">
+                      <td className="px-2 py-4 whitespace-nowrap  text-center">
                         <div className="text-sm text-gray-500">
                           {time.over_minutes}
                         </div>
                       </td>
-                      <td className="px-2 py-4 whitespace-nowrap text-sm font-medium">
+                      <td className="px-2 py-4 whitespace-nowrap  text-center text-sm font-medium">
                         <a
-                          href="#"
+                          onClick={() => {
+                            localStorage.setItem("time_data", [time.start_time,time.end_time]);
+                          }}
+                          href={`/edit_time/${time._id}`}
                           className="text-indigo-600 hover:text-indigo-900"
                         >
                           Edit

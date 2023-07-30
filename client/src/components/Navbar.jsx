@@ -16,7 +16,7 @@ const Navbar = () => {
   // Define links for Service dropdown menu
   let Links = [
     { name: "Enter Time", link: "/enter_time" },
-    { name: "View Time", link: "/" }
+    { name: "View Time", link: "/my_time" }
   ];
   let [open, setOpen] = useState(false);
   let [dropdown, setDropdown] = useState(false);
