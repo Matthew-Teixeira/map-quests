@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import EnterTime from "./pages/EnterTime";
 import TimeTable from "./pages/TimeTable";
+import EditTime from "./pages/EditTime";
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
               path="/resetpassword/:resetToken"
               element={<ResetPassword />}
             />
-            <Route path="my_time" element={<TimeTable />} />
+            <Route path="/my_time" element={<TimeTable />} />
+            <Route path="/edit_time/:id" element={<EditTime />} />
           </Routes>
         </main>
       </Router>
