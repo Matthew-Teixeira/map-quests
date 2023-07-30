@@ -84,4 +84,52 @@ const save_user_time = async (req, res) => {
   }
 };
 
-module.exports = { save_user_time, get_user_time };
+const edit_time = async (req, res) => {
+  const { id } = req.params;
+
+  const { start_time, end_time } = req.body;
+
+  const date_time_test = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/;
+  const start_time_test = date_time_test.test(start_time);
+  const end_time_test = date_time_test.test(end_time);
+  try {
+    if (!end_time_test || !start_time_test) {
+      res.status(400);
+      throw new Error("Could not validate datetimes");
+    }
+
+    const start = DateTime.fromISO(start_time);
+    const end = DateTime.fromISO(end_time);
+
+    let time_dif = end.diff(start, ["hours", "minutes"]).toObject();
+
+    const time = {
+      reg_hours: parseInt(time_dif.hours),
+      reg_minutes: parseInt(time_dif.minutes),
+      over_hours: 0,
+      over_minutes: 0
+    };
+    if (time.reg_hours >= 8) {
+      time.over_hours = time_dif.hours - 8;
+      time.over_minutes = time_dif.minutes;
+      time.reg_hours = 8;
+      time.reg_minutes = 0;
+    }
+
+    time.start_time = start_time;
+    time.end_time = end_time;
+
+    const found_time = await Time.findByIdAndUpdate(id, time, {
+      new: true
+    });
+
+    return await res.status(200).json(found_time);
+  } catch (error) {
+    console.log(error.message);
+    res.json({
+      error: error.message
+    });
+  }
+};
+
+module.exports = { save_user_time, get_user_time, edit_time };
