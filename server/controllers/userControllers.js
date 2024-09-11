@@ -1,4 +1,4 @@
-const { User, Token, TimeCard } = require("../models/index");
+const { User, Token, Map, Coordinate } = require("../models/index");
 const generateToken = require("../utils/generateToken");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
@@ -39,7 +39,6 @@ const getOneUser = async (req, res) => {
       res.status(404);
       throw new Error("User Not Found");
     }
-    //const userTimeCard = await TimeCard.findById
     res.status(200).json(foundUser);
   } catch (error) {
     res.json({
@@ -77,8 +76,25 @@ const registerUser = async (req, res) => {
       throw new Error("Invalid user data");
     }
 
-    const userTimeCard = await TimeCard.create({ user: newUser._id });
-    await User.findByIdAndUpdate(newUser._id, { time_card: userTimeCard._id });
+    // Create some coordinates
+    const coord1 = new Coordinate({ latitude: 40.7128, longitude: -74.0060 });
+    const coord2 = new Coordinate({ latitude: 34.0522, longitude: -118.2437 });
+    await coord1.save();
+    await coord2.save();
+
+    // Create a map with coordinates
+    const map = new Map({
+      name: 'My Map',
+      coordinates: [coord1, coord2]
+    });
+    await map.save();
+
+    if (!map) {
+      res.status(400);
+      throw new Error("Map Creation Error");
+    }
+
+    await User.findOneAndUpdate({ _id: newUser._id }, { $set: { maps: map._id } });
 
     const token = await generateToken(newUser);
 

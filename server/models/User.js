@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const Map = require("./Map");
 
 const userSchema = new Schema(
   {
@@ -27,10 +28,7 @@ const userSchema = new Schema(
       default:
         "https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg"
     },
-    time_card: {
-      type: Schema.Types.ObjectId,
-      ref: "TimeCard"
-    }
+    maps: [{ type: Schema.Types.ObjectId, ref: 'Map' }]  // Array of ObjectIds referencing Map documents
   },
   {
     timestamps: true

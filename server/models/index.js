@@ -1,11 +1,11 @@
 const User = require("./User");
 const Token = require("./Token");
-const TimeCard = require("./TimeCard");
-const Time = require("./Time");
+const Map = require("./Map");
+const Coordinate = require("./Coordinate");
 
 module.exports = {
   User,
   Token,
-  Time,
-  TimeCard
+  Map,
+  Coordinate
 };
