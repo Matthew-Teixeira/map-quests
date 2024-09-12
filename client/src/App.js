@@ -8,9 +8,10 @@ import ForgotPassword from "./pages/admin_settings/ForgotPassword";
 import ResetPassword from "./pages/admin_settings/ResetPassword";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
-import EnterTime from "./pages/EnterTime";
 import TimeTable from "./pages/TimeTable";
 import EditTime from "./pages/EditTime";
+import Plot from "./pages/Plot";
+import Map from "./pages/Map";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Navbar />
           </nav>
         </header>
-        <main className="dark:bg-gray-400 bg-gray-100 min-h-[calc(100vh-66px)]">
+        <main className="dark:bg-gray-400 bg-gray-100 min-h-[calc(100vh-66px)] p-4">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Signup />} />
@@ -29,7 +30,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/forgot_pass" element={<ForgotPassword />} />
-            <Route path="/enter_time" element={<EnterTime />} />
+            <Route path="/plot" element={<Plot />} />
+            <Route path="/map/:map_id" element={<Map />} />
             <Route
               path="/resetpassword/:resetToken"
               element={<ResetPassword />}

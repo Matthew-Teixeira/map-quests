@@ -15,8 +15,8 @@ const Navbar = () => {
   const loggedIn = Auth.loggedIn();
   // Define links for Service dropdown menu
   let Links = [
-    { name: "Enter Time", link: "/enter_time" },
-    { name: "View Time", link: "/my_time" }
+    { name: "My Maps", link: "/dashboard" },
+    { name: "Plot", link: "/plot" }
   ];
   let [open, setOpen] = useState(false);
   let [dropdown, setDropdown] = useState(false);
@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <Switcher />
           <div className="font-bold text-2xl cursor-pointer mx-auto pr-[30px]">
-            <Link to={"/home"}>My-Time</Link>
+            <Link to={"/home"}>Map Quests</Link>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ const Navbar = () => {
           <div className="relative" onClick={() => setDropdown(!dropdown)}>
             <div className="flex items-center cursor-pointer">
               <li className="md:ml-8 text-xl md:my-0 mr-1 hover:text-gray-800 dark:hover:text-gray-200 duration-200 font-semibold">
-                Time
+                Maps
               </li>
               {dropdown ? <FaChevronUp /> : <FaChevronDown />}
             </div>
