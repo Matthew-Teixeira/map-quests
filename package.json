@@ -1,13 +1,14 @@
 {
   "name": "user-auth-mern",
   "version": "1.0.0",
+  "homepage": "https://map-quests-10f6783b8d2b.herokuapp.com/",
   "engines": {"node": "20.11.1"},
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
     "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ApolloSolo/user-auth-mern/issues"
-  },
-  "homepage": "https://github.com/ApolloSolo/user-auth-mern#readme"
+  }
 }

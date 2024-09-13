@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage": "https://map-quests-10f6783b8d2b.herokuapp.com/",
   "private": true,
   "proxy": "http://localhost:5000/",
   "dependencies": {
