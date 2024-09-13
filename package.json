@@ -1,6 +1,7 @@
 {
   "name": "user-auth-mern",
   "version": "1.0.0",
+  "engines": {"node": "20.11.1"},
   "description": "",
   "main": "index.js",
   "scripts": {
