@@ -10,6 +10,6 @@ mongoose
     }
   )
   .then(() => console.log("Connected to MongoDB"))
-  .catch(() => console.log("MongoDB connetion error"));
+  .catch((err) => console.log("MongoDB connetion error: ", err));
 
 module.exports = mongoose.connection;
