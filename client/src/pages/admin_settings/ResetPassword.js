@@ -17,13 +17,15 @@ const ResetPassword = () => {
   const handleReset = async (newPassword, confirmPassword) => {
     try {
       const response = await fetch(`/api/user/resetpassword/${resetToken}`, {
+        mode: "cors",
         method: "PUT",
         body: JSON.stringify({
           newPassword,
           confirmPassword
         }),
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         }
       });
 

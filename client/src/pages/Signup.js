@@ -14,6 +14,7 @@ export default function Signup() {
   const registerUser = async (username, email, password, confirmPass) => {
     try {
       const response = await fetch("/api/user/register", {
+        mode: "cors",
         method: "POST",
         body: JSON.stringify({
           username,
@@ -22,7 +23,8 @@ export default function Signup() {
           confirmPass
         }),
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         }
       });
 

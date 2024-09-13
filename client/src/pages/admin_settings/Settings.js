@@ -12,10 +12,12 @@ const Settings = () => {
     const fetchUserData = async () => {
       try {
         const response = await fetch("/api/user/me", {
+          mode: "cors",
           method: "GET",
           headers: {
             Authorization: `Bearer ${userToken}`,
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
           }
         });
 

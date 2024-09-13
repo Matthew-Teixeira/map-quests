@@ -12,13 +12,15 @@ export default function Login() {
   const loginUser = async (email, password) => {
     try {
       const response = await fetch("/api/user/login", {
+        mode: "cors",
         method: "POST",
         body: JSON.stringify({
           email,
           password
         }),
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         }
       });
 

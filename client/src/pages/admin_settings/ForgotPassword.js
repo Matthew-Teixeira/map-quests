@@ -8,10 +8,12 @@ const ForgotPassword = () => {
   const handleReset = async email => {
     try {
       const response = await fetch("/api/user/forgotpassword", {
+        mode: "cors",
         method: "POST",
         body: JSON.stringify({ email }),
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         }
       });
 

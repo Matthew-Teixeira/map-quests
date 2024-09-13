@@ -19,9 +19,11 @@ const Map = () => {
         async function get_user_map() {
             try {
                 const response = await fetch(`/api/maps/map/${map_id}`, {
+                    mode: "cors",
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
                         Authorization: `Bearer ${token}`
                     }
                 });

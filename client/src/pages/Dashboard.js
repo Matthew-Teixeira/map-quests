@@ -22,9 +22,11 @@ const Dashboard = () => {
     async function get_user_maps() {
       try {
         const response = await fetch("/api/maps/my_maps/", {
+          mode: "cors",
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
             Authorization: `Bearer ${token}`
           }
         });
