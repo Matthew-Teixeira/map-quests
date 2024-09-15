@@ -68,15 +68,19 @@ const Navbar = () => {
               </a>
             </li>
           )}
-          <div className="relative" onClick={() => setDropdown(!dropdown)}>
-            <div className="flex items-center cursor-pointer">
-              <li className="md:ml-8 text-xl md:my-0 mr-1 hover:text-gray-800 dark:hover:text-gray-200 duration-200 font-semibold">
-                Maps
-              </li>
-              {dropdown ? <FaChevronUp /> : <FaChevronDown />}
+          {loggedIn ? (
+            <div className="relative" onClick={() => setDropdown(!dropdown)}>
+              <div className="flex items-center cursor-pointer">
+                <li className="md:ml-8 text-xl md:my-0 mr-1 hover:text-gray-800 dark:hover:text-gray-200 duration-200 font-semibold">
+                  Maps
+                </li>
+                {dropdown ? <FaChevronUp /> : <FaChevronDown />}
+              </div>
+              {dropdown ? <InnerDropdown list={Links} /> : false}
             </div>
-            {dropdown ? <InnerDropdown list={Links} /> : false}
-          </div>
+          ) : (
+            false
+          )}
           {loggedIn ? (
             <>
               <li className="md:ml-8 text-xl md:my-0 my-6">

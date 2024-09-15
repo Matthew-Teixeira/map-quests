@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Auth from "../utils/auth";
+import MapComp from '../components/MapComp';
 
 const Map = () => {
     const { map_id } = useParams();
     const [mapData, setMapData] = useState(null);
     const [token, setToken] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const userToken = Auth.getToken();
@@ -30,9 +32,14 @@ const Map = () => {
 
                 const data = await response.json();
 
-                if (response.ok) {
-                    console.log(data);
-                    setMapData(data);
+                console.log("\nresponse");
+                console.log(response);
+
+                if (response.ok && !data.error) {
+                    console.log("\ndata.coordinates");
+                    console.log(data.coordinates);
+                    setMapData(data.coordinates);
+                    setLoading(false);
                 } else throw new Error(data.error);
             } catch (error) {
                 console.log("\n**** error ****\n");
@@ -43,8 +50,12 @@ const Map = () => {
         get_user_map();
     }, [token]);
 
+
     return (
-        <div>Map</div>
+        <div>
+            {loading ? (<p>LOADING...</p>) : (<MapComp coordinates={mapData} />)
+            }
+        </div>
     );
 };
 
