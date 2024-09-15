@@ -11,7 +11,7 @@ const MapComp = ({ coordinates }) => {
     zoom: 10
   });
 
-  const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN; // Replace with your Mapbox token
+  const mapboxToken = "pk.eyJ1IjoibWF0dDF0ZWl4ZWlyYSIsImEiOiJja3loZWxmb20waDF3MnFwY2gwaTF6angzIn0.f2IGDI6HsSfwzg1ducVA8g" //process.env.REACT_APP_MAPBOX_TOKEN; // Replace with your Mapbox token
   console.log("\n\nmapboxToken");
   console.log(mapboxToken);
   console.log("\n\nmapboxToken");
