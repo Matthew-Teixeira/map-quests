@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="shadow-md relative w-full bg-blue-500 dark:bg-gray-800 dark:text-[#fdf8ad]">
+    <nav className="shadow-md relative w-full bg-green-500 dark:bg-gray-800 dark:text-[#fdf8ad]">
       <div className="md:flex justify-between py-2 px-6">
         <div className="flex items-center">
           <Switcher />
@@ -45,7 +45,7 @@ const Navbar = () => {
         <ul
           className={`md:flex md:items-center md:pb-0 pb-4 md:static dark:bg-gray-800 absolute md:z-auto z-[1] left-0 w-full md:w-auto md:pl-0 pl-4 ${
             open
-              ? "top-[60px] opacity-100 border-b-2 dark:bg-gray-800"
+              ? "top-[60px] opacity-100 border-b-2 dark:bg-gray-800 bg-green-500"
               : "top-[-500px] opacity-0"
           } md:opacity-100`}
         >

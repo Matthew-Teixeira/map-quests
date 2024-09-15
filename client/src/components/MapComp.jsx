@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -6,21 +6,19 @@ const MapComp = ({ coordinates }) => {
   const [selectedMarker, setSelectedMarker] = useState(null); // Store the clicked marker info
 
   const [viewport, setViewport] = useState({
-    latitude: 37.7749, // Default location (e.g., San Francisco)
-    longitude: -122.4194,
-    zoom: 10
+    latitude: coordinates[0].latitude, // Default location (e.g., San Francisco)
+    longitude: coordinates[0].longitude,
+    zoom: 11
   });
 
-  const mapboxToken = "pk.eyJ1IjoibWF0dDF0ZWl4ZWlyYSIsImEiOiJja3loZWxmb20waDF3MnFwY2gwaTF6angzIn0.f2IGDI6HsSfwzg1ducVA8g" //process.env.REACT_APP_MAPBOX_TOKEN; // Replace with your Mapbox token
-  console.log("\n\nmapboxToken");
-  console.log(mapboxToken);
-  console.log("\n\nmapboxToken");
+  const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN; // Replace with your Mapbox token
+
   return (
-    <div style={{ height: "500px", width: "100%" }}>
+    <div style={{ height: `calc(100vh - 88px)`, width: "100%" }}>
       <Map
         initialViewState={viewport}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
+        mapStyle="mapbox://styles/mapbox/satellite-streets-v12"
         mapboxAccessToken={mapboxToken}
         onClick={() => setSelectedMarker(null)} // Deselect popup on map click
       >
@@ -37,8 +35,8 @@ const MapComp = ({ coordinates }) => {
               <div
                 style={{
                   backgroundColor: "red",
-                  height: "10px",
-                  width: "10px",
+                  height: "8px",
+                  width: "8px",
                   borderRadius: "50%"
                 }}
               />
