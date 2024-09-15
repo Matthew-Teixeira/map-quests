@@ -15,6 +15,7 @@ const MapComp = ({ coordinates }) => {
 
   return (
     <div style={{ height: '500px', width: '100%' }}>
+      
       <Map
         initialViewState={viewport}
         style={{ width: '100%', height: '100%' }}
