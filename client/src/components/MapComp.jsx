@@ -35,9 +35,10 @@ const MapComp = ({ coordinates }) => {
               <div
                 style={{
                   backgroundColor: "red",
-                  height: "8px",
-                  width: "8px",
-                  borderRadius: "50%"
+                  height: "10px",
+                  width: "10px",
+                  borderRadius: "50%",
+                  cursor: 'pointer'
                 }}
               />
             </Marker>

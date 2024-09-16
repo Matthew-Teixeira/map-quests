@@ -27,7 +27,7 @@ const get_one_coordinate = async (req, res) => {
 const create_coordinate = async (req, res) => {
     try {
         const { name, latitude, longitude, map_id } = req.body;
-        console.log(latitude);
+
         // Create some coordinates
         const coordinate = await Coordinate.create({ name, latitude, longitude });
 

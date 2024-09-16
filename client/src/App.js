@@ -12,6 +12,7 @@ import TimeTable from "./pages/TimeTable";
 import EditTime from "./pages/EditTime";
 import Plot from "./pages/Plot";
 import Map from "./pages/Map";
+import { CreateNewMap } from "./pages/CreateNewMap";
 
 function App() {
   return (
@@ -30,8 +31,9 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/forgot_pass" element={<ForgotPassword />} />
-            <Route path="/plot" element={<Plot />} />
+            <Route path="/plot/:map_name/:map_id" element={<Plot />} />
             <Route path="/map/:map_id" element={<Map />} />
+            <Route path="/new_map" element={<CreateNewMap />} />
             <Route
               path="/resetpassword/:resetToken"
               element={<ResetPassword />}

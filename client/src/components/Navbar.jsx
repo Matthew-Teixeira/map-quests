@@ -15,8 +15,8 @@ const Navbar = () => {
   const loggedIn = Auth.loggedIn();
   // Define links for Service dropdown menu
   let Links = [
-    { name: "My Maps", link: "/dashboard" },
-    { name: "Plot", link: "/plot" }
+    { name: "New Map", link: "/new_map" },
+    { name: "View Maps", link: "/dashboard" }
   ];
   let [open, setOpen] = useState(false);
   let [dropdown, setDropdown] = useState(false);
