@@ -1,12 +1,14 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import TrashcanWithModal from "./modals/TrashcanWithModal";
+import EditWithModal from "./modals/EditWithModal";
 
 const DashMapCard = ({ map_data }) => {
   return (
-    <div className="w-full md:w-[300px] overflow-hidden rounded-xl bg-white shadow-md duration-300 hover:shadow-xl p-4 my-4 md:mx-4">
-      <h2 className="text-xl font-bold text-center mb-2">
-        Map: {map_data.name}
-      </h2>
+    <div className="relative w-full md:w-[300px] overflow-hidden rounded-xl bg-white shadow-md duration-300 hover:shadow-xl p-4 my-4 md:mx-4">
+      <TrashcanWithModal map_id={map_data._id} />
+      <EditWithModal />
+      <h2 className="text-xl font-bold text-center mb-2">{map_data.name}</h2>
       <p className="font-medium">
         Last Updated: <span className="font-normal">{map_data.updatedAt}</span>
       </p>

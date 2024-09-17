@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
+import CreatMapModal from "../components/modals/CreateMapModal";
 
 export const CreateNewMap = () => {
     const [token, setToken] = useState(null);
@@ -34,7 +35,7 @@ export const CreateNewMap = () => {
             const data = await response.json();
 
             if (response.ok) {
-                window.location.assign("/dashboard");
+                // window.location.assign("/dashboard");
             } else throw new Error(data.error);
         } catch (error) {
             console.log(error.message);
@@ -75,13 +76,8 @@ export const CreateNewMap = () => {
                         />
                     </div>
                     <div className="mt-6">
-                            <button
-                                type="submit"
-                                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-                            >
-                                Submit
-                            </button>
-                        </div>
+                        <CreatMapModal map_name={formData.map_name}/>
+                    </div>
                 </form>
             </div>
         </div>
