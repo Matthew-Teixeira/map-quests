@@ -23,7 +23,7 @@ function App() {
             <Navbar />
           </nav>
         </header>
-        <main className="dark:bg-gray-400 bg-gray-100 min-h-[calc(100vh-66px)] p-2">
+        <main className="dark:bg-gray-400 bg-gray-100 min-h-[calc(100vh-66px)]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Signup />} />
