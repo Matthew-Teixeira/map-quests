@@ -32,9 +32,6 @@ const Map = () => {
 
                 const data = await response.json();
 
-                console.log("\nresponse");
-                console.log(response);
-
                 if (response.ok && !data.error) {
                     console.log("\ndata.coordinates");
                     console.log(data.coordinates);

@@ -77,15 +77,38 @@ const registerUser = async (req, res) => {
     }
 
     // Create some coordinates
-    const coord1 = new Coordinate({ latitude: 40.7128, longitude: -74.0060 });
-    const coord2 = new Coordinate({ latitude: 34.0522, longitude: -118.2437 });
-    await coord1.save();
-    await coord2.save();
+    const pyramids = new Coordinate({ latitude: 29.977475, longitude: 31.132754, name: "Giza Pyramids" });
+    const colossus = new Coordinate({ latitude: 36.45120844, longitude: 28.2279819817, name: "Colossus of Rhodes" });
+    const gardens = new Coordinate({ latitude: 32.54409147132844, longitude: 44.42042278305762, name: "Hanging Gardens of Babylon" });
+    const lighthouse = new Coordinate({
+      latitude: 31.214141341908945
+      , longitude: 29.89131064580883, name: "Lighthouse of Alexandria"
+    });
+    const mausoleum = new Coordinate({
+      latitude: 37.037879297412466, longitude: 27.42410793395388
+      , name: "Mausoleum at Halicarnassus"
+    });
+    const olympia = new Coordinate({
+      latitude: 37.64463398224096, longitude: 21.625922945386026
+      , name: "Statue of Zeus at Olympia"
+    });
+    const artemis = new Coordinate({
+      latitude: 37.94960043029918, longitude: 27.36390888723207
+      , name: "Temple of Artemis"
+    });
+
+    await pyramids.save();
+    await colossus.save();
+    await gardens.save();
+    await lighthouse.save();
+    await mausoleum.save();
+    await olympia.save();
+    await artemis.save();
 
     // Create a map with coordinates
     const map = new Map({
-      name: 'My Map',
-      coordinates: [coord1, coord2]
+      name: 'Seven World Wonders',
+      coordinates: [pyramids, colossus, gardens, lighthouse, mausoleum, olympia, artemis]
     });
     await map.save();
 

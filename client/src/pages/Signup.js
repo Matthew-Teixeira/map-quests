@@ -137,7 +137,7 @@ export default function Signup() {
             to={"/login"}
             className="font-medium text-blue-400 hover:text-blue-700 hover:underline"
           >
-            Sign In
+            Sign Up
           </Link>
         </p>
         {registerError &&

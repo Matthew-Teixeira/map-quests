@@ -52,7 +52,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2 className='text-center font-bold text-2xl'>Your Maps</h2>
+      <h2 className='text-center font-bold text-2xl'>Maps</h2>
       <div className='flex justify-center flex-wrap'>
         {mapData ? (
           mapData.map((m) => (

@@ -25,7 +25,7 @@ const EditWithModal = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-lg max-w-sm w-full relative">
-            <h2 className="text-xl font-semibold mb-4">Delete Confirmation</h2>
+            <h2 className="text-xl font-semibold mb-4">Edit Confirmation</h2>
             <p>Would you like to edit this map?</p>
             <div className="mt-6 flex justify-end space-x-4">
               <button

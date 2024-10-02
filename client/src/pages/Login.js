@@ -4,8 +4,8 @@ import Auth from "../utils/auth";
 
 export default function Login() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: ""
+    email: "default@gmail.com",
+    password: "123456"
   });
   const [loginError, setLoginError] = useState(null);
 
@@ -62,6 +62,7 @@ export default function Login() {
               type="email"
               name="email"
               onChange={onChange}
+              value={formData.email}
               required
               className="block w-full px-4 py-2 mt-2 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -77,6 +78,7 @@ export default function Login() {
               type="password"
               name="password"
               onChange={onChange}
+              value={formData.password}
               required
               className="block w-full px-4 py-2 mt-2 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
